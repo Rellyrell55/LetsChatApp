@@ -1,5 +1,5 @@
-import React from 'react';
-//import './App.css';
+import React, { useState } from 'react';
+import './App.css';
 
 import firebase from 'firebase/app'
 import 'firebase/firestore'
@@ -28,7 +28,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>HELLO</h1>
+        <h1>Lets Chat!</h1>
       </header>
       <section>
         {user ? <ChatRoom/> : <SignIn/>}
@@ -54,32 +54,48 @@ function SignOut(){
 
 function ChatRoom(){
   const messagesRef = firestore.collection('messages')
+  const query = messagesRef.orderBy('createdAt').limit(25)
   
-  const query = messagesRef.orderBy('createAt').limit(25)
   const [messages] = useCollectionData(query, {idField: 'id'})
-  //ended here messages not being shown but there is a messages key no value 
-  console.log([messages])
+  
+  const[formValue, setFromValue] = useState('')
+  
+  const sendMessage = async(e) => {
+    e.preventDefault()
+    const  {uid, photoURL } = auth.currentUser
+
+    await messagesRef.add({
+      text: formValue,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      uid,
+      photoURL
+    })
+    setFromValue('')
+  }
   
   return (
     <> 
     <div>
       {messages && messages.map(msg => <ChatMessage key={msg.id} message={msg} />)}
+      <signOut/>
     </div>
-    <div>
-      <SignOut/>
-    </div>
+
+    <form onSubmit={sendMessage}>
+      <input value={formValue} onChange={(e) => setFromValue(e.target.value)}/>
+      <button type="submit">📤</button>
+    </form>
     </>
   )
 }
 
 function ChatMessage({ message }){
-  const {text, uid } = message
+  const {text, uid, photoURL } = message
   console.log(message)
   const messageClass = uid === auth.currentUser.uid ? 'sent' : 'received' 
 
   return (
     <div className={`message ${messageClass}`}>
-      {/* <img src={photoURL}/> */}
+      <img src={photoURL} alt="Profile Picture"/>
       <p>{text}</p>
     </div>
   )
