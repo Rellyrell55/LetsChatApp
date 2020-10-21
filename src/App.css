@@ -65,13 +65,13 @@ form {
   font-size: 1.5rem;
 }
 
-form button {
+/* form button {
   width: 20%;
   background-color: rgb(56, 56, 143);
-}
+} */
 
 
-input {
+/* input {
   line-height: 1.5;
   width: 100%;
   font-size: 1.5rem;
@@ -80,10 +80,10 @@ input {
   outline: none;
   border: none;
   padding: 0 10px;
-}
+} */
 
-button {
-  background-color: #282c34; /* Green */
+/* button {
+  background-color: #282c34; 
   border: none;
   color: white;
   padding: 15px 32px;
@@ -92,12 +92,12 @@ button {
   display: inline-block;
   cursor: pointer;
   font-size: 1.25rem;
-}
+} */
 
-button:disabled {
+/* button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
-}
+} */
 
 
 .sign-in {
@@ -109,13 +109,13 @@ button:disabled {
 
 
 
-
+/* 
 ul, li {
   text-align: left;
   list-style: none;
-}
+} */
 
-p {
+/* p {
   max-width: 500px;
   margin-bottom: 12px;
   line-height: 24px;
@@ -124,12 +124,12 @@ p {
   position: relative;
   color: white;
   text-align: center;
-}
+} */
 
-.message {
+/* .message {
   display: flex;
   align-items: center;
-}
+} */
 
 
 .sent {

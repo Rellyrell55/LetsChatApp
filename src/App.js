@@ -29,6 +29,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>Lets Chat!</h1>
+        <SignOut/>
       </header>
       <section>
         {user ? <ChatRoom/> : <SignIn/>}
@@ -83,7 +84,7 @@ function ChatRoom(){
       {messages && messages.map(msg => <ChatMessage key={msg.id} message={msg} />)}
       <div ref={dummy}></div>
     </main>
-
+    
     <form onSubmit={sendMessage}>
       <input value={formValue} onChange={(e) => setFromValue(e.target.value)}/>
       <button type="submit">📤</button>
@@ -94,7 +95,7 @@ function ChatRoom(){
 
 function ChatMessage({ message }){
   const {text, uid, photoURL } = message
-  console.log(message)
+  
   const messageClass = uid === auth.currentUser.uid ? 'sent' : 'received' 
 
   return (
