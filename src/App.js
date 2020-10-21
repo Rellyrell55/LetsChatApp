@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import './App.css';
 
 import firebase from 'firebase/app'
@@ -53,6 +53,8 @@ function SignOut(){
 }
 
 function ChatRoom(){
+  const dummy = useRef()
+
   const messagesRef = firestore.collection('messages')
   const query = messagesRef.orderBy('createdAt').limit(25)
   
@@ -71,14 +73,16 @@ function ChatRoom(){
       photoURL
     })
     setFromValue('')
+
+    dummy.current.scrollIntoView({ behavior: 'smooth' })
   }
   
   return (
     <> 
-    <div>
+    <main>
       {messages && messages.map(msg => <ChatMessage key={msg.id} message={msg} />)}
-      <signOut/>
-    </div>
+      <div ref={dummy}></div>
+    </main>
 
     <form onSubmit={sendMessage}>
       <input value={formValue} onChange={(e) => setFromValue(e.target.value)}/>
