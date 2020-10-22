@@ -93,6 +93,7 @@ Project is: finished currently live at https://superchat-b1dee.web.app/. Code wi
 Created by [Terrell Cooper](https://www.linkedin.com/in/terrell-cooper-43252aaa/) Feel free to reach out if you have any questions or just want to chat! 
 
 Slack: @Terrell Cooper
+LinkedIn: https://www.linkedin.com/in/terrell-cooper-43252aaa/
 
 
 
