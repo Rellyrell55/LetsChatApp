@@ -111,6 +111,3 @@ export default App;
 
 
 
-// 21 Questions game
-// button for refesh game... will use sumit
-// finish stlying 
