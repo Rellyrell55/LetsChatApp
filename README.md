@@ -36,7 +36,7 @@ https://superchat-b1dee.web.app/ to try it out your self!
 
 ## Code Examples
 
-JavaScript 
+React.JS  
 
 ```
 import firebase from 'firebase/app'
