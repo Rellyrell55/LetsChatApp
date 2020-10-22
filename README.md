@@ -1,68 +1,94 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# README
 
-## Available Scripts
+# Lets Chat! App
+Live Demo: https://superchat-b1dee.web.app/
 
-In the project directory, you can run:
 
-### `yarn start`
+> A super chat app where users sign in with there google accounts and can chat real time with other users that are signed in! 
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Table of contents
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- [General info](#general-info)
+- [Technologies](#technologies)
+- [Setup](#setup)
+- [Features](#features)
+- [Status](#status)
+- [Contact](#contact)
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## General info
 
-### `yarn build`
+The Lets Talk App allows you to chat with users from any location at real time. Also, 
+utilizes Googles Authentication for sign in make it super simple to use! 
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Technologies
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- React
+- Firebase
+- Firestore 
+- HTML - version 5
+- CSS - version 3 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Setup
 
-### `yarn eject`
+No set up reqired! Must have a Google acount to sign in to the app. Head to 
+https://superchat-b1dee.web.app/ to try it out your self! 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Code Examples
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+JavaScript 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
+import firebase from 'firebase/app'
+import 'firebase/firestore'
+import 'firebase/auth'
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { useCollectionData } from 'react-firebase-hooks/firestore'
 
-## Learn More
+const auth = firebase.auth()
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+function App() {
+  const [user] = useAuthState(auth)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  return (
+    <div className="App">
+      <header className="App-header">
+        <h1>Lets Chat!🗣 💬🔥</h1>
+        <SignOut/>
+      </header>
+      <section>
+        {user ? <ChatRoom/> : <SignIn/>}
+      </section>
+    </div>
+  );
+}
+function SignIn(){
+  const signInWithGoogle = () => {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      auth.signInWithPopup(provider)
+  }
+  return(
+    <button onClick={signInWithGoogle}>Sign In</button>
+  )
+}
 
-### Code Splitting
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## Features
 
-### Analyzing the Bundle Size
+- Creates user and adds to the database 
+- Sign In and Sign Out
+- User needs to have a correct password to long in
+- Api for all of the messages 
+- button animations (lift)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
 
-### Making a Progressive Web App
+## Status
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+Project is: finished currently live at https://superchat-b1dee.web.app/. Code will need to be refactored to be scalable
 
-### Advanced Configuration
+## Contact
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Created by [Terrell Cooper](https://www.linkedin.com/in/terrell-cooper-43252aaa/) 
+with a Favicon from (https://www.flaticon.com/free-icon/chat_610413?term=chat&page=1&position=75)

@@ -28,7 +28,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Lets Chat!</h1>
+        <h1>Lets Chat!🗣 💬🔥</h1>
         <SignOut/>
       </header>
       <section>
@@ -57,7 +57,7 @@ function ChatRoom(){
   const dummy = useRef()
 
   const messagesRef = firestore.collection('messages')
-  const query = messagesRef.orderBy('createdAt').limit(25)
+  const query = messagesRef.orderBy('createdAt').limit(50)
   
   const [messages] = useCollectionData(query, {idField: 'id'})
   
@@ -86,7 +86,7 @@ function ChatRoom(){
     </main>
     
     <form onSubmit={sendMessage}>
-      <input value={formValue} onChange={(e) => setFromValue(e.target.value)}/>
+      <input placeholder="Start Chatting Here!" value={formValue} onChange={(e) => setFromValue(e.target.value)}/>
       <button type="submit">📤</button>
     </form>
     </>
@@ -94,7 +94,7 @@ function ChatRoom(){
 }
 
 function ChatMessage({ message }){
-  const {text, uid, photoURL } = message
+  const { text, uid, photoURL } = message
   
   const messageClass = uid === auth.currentUser.uid ? 'sent' : 'received' 
 
@@ -108,3 +108,9 @@ function ChatMessage({ message }){
 
 
 export default App;
+
+
+
+// 21 Questions game
+// button for refesh game... will use sumit
+// finish stlying 
