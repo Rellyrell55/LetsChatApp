@@ -90,5 +90,10 @@ Project is: finished currently live at https://superchat-b1dee.web.app/. Code wi
 
 ## Contact
 
-Created by [Terrell Cooper](https://www.linkedin.com/in/terrell-cooper-43252aaa/) 
+Created by [Terrell Cooper](https://www.linkedin.com/in/terrell-cooper-43252aaa/) Feel free to reach out if you have any questions or just want to chat! 
+
+Slack: @Terrell Cooper
+
+
+
 with a Favicon from (https://www.flaticon.com/free-icon/chat_610413?term=chat&page=1&position=75)
